@@ -44,3 +44,4 @@ if __name__ == '__main__':
     chat_room2.add_user(charlie)
     mediator.invite_user_to_chat_room(alice, "Python")
     mediator.invite_user_to_chat_room(bob, "Python")
+    mediator.send_message(Message(translated_message), charlie)

@@ -26,11 +26,13 @@ class Store:
                 result.append(product)
         return result
 
-    def sort_products(self, products, by='name'):
+    def sort_products(self, category, by='name'):
         if by == 'name':
-            return sorted(products, key=lambda p: p.name)
+            return sorted(category.products, key=lambda p: p.name)
         elif by == 'price':
-            return sorted(products, key=lambda p: p.price)
+            return sorted(category.products, key=lambda p: p.price)
+        elif by == 'quantity':
+            return sorted(category.products, key=lambda p: p.quantity)
         else:
             raise ValueError('Invalid sort parameter')
     

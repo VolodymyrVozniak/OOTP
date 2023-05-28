@@ -1,4 +1,6 @@
+from copy import deepcopy
 from ..car.car import Car
+
 
 class CarBuilder:
     def __init__(self):
@@ -17,4 +19,4 @@ class CarBuilder:
         return self
 
     def build(self) -> Car:
-        return self._car
+        return deepcopy(self._car)

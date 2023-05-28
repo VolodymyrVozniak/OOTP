@@ -10,3 +10,9 @@ class ShoppingCart:
 
     def total_price(self):
         return sum([product.price * quantity for product, quantity in self.items])
+
+    def __str__(self):
+        result = "Cart: "
+        for product, quantity in self.items:
+            result += f"{quantity} {product}; "
+        return result

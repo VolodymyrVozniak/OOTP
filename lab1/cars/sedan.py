@@ -1,7 +1,9 @@
 from .base import Car
+from engines.base import Engine
+
 
 class Sedan(Car):
-    def __init__(self, engine):
+    def __init__(self, engine: Engine):
         super().__init__(engine)
 
     def start_engine(self):

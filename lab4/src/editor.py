@@ -1,5 +1,5 @@
 from typing import List
-from .command import Command, MacroCommand, UndoCommand, RedoCommand
+from .command import Command, MacroCommand
 from .text_selection import TextSelection
 
 
@@ -11,17 +11,10 @@ class Editor:
     
     def execute_command(self, command: Command):
         command.execute()
-        if isinstance(command, MacroCommand):
-            self.commands_history.extend(command.commands)
-        else:
-            self.commands_history.append(command)
-    
-    def execute_macro(self, macro: MacroCommand):
-        macro.execute()
 
     def select_text(self, start: int, end: int):
-        selection = TextSelection(start, end)
-        return self.text[selection.start: selection.end]
+        self.selection = TextSelection(start, end)
+        return self.text[self.selection.start: self.selection.end]
 
     def move_cursor(self, pos: int):
         self.cursor_pos = pos

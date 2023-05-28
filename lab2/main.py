@@ -1,5 +1,6 @@
 from car_configurator import Car, CarPrototype, CarBuilder
 
+
 def main():
     # Using CarPrototype
     car_prototype = CarPrototype(Car(make='Toyota', model='Corolla', color='red'))
@@ -22,6 +23,7 @@ def main():
     print(car4)
     print(car5)
     print(car6)
+
 
 if __name__ == "__main__":
     main()

@@ -1,16 +1,20 @@
 class Order:
     def __init__(self, cart):
         self.cart = cart
-        self.status = NewOrderState()
+        self.status = "initialized"
+        self.state = NewOrderState()
 
     def cancel(self):
-        self.status.cancel()
+        self.state.cancel()
+        self.state = NewOrderState()
 
     def verify_payment(self):
-        self.status.verify_payment()
+        self.state.verify_payment()
+        self.state = PaidOrderState()
 
     def ship(self):
-        self.status.ship()
+        self.state.ship()
+        self.state = ShippedOrderState()
 
 
 class OrderState:

@@ -6,7 +6,6 @@ class Command(ABC):
         self.editor = editor
     
     def execute(self):
-        self.editor.save_state()
         self.do_execute()
     
     @abstractmethod
@@ -48,13 +47,3 @@ class DeleteCommand(Command):
             start, end = self.editor.cursor_pos - 1, self.editor.cursor_pos
         self.editor.text = self.editor.text[:start] + self.editor.text[end:]
         self.editor.cursor_pos = start
-
-
-class UndoCommand(Command):
-    def do_execute(self):
-        self.editor.restore_state(self.editor.undo_stack, self.editor.redo_stack)
-
-
-class RedoCommand(Command):
-    def do_execute(self):
-        self.editor.restore_state(self.editor.redo_stack, self.editor.undo_stack)

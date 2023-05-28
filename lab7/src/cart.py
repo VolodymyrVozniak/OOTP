@@ -1,6 +1,5 @@
-from .item import CartItem
+from copy import deepcopy
 from .cart_memento import CartMemento
-from .cart_visitor import CartVisitor
 
 
 class Cart:
@@ -30,7 +29,13 @@ class Cart:
         visitor.visit(self)
 
     def create_memento(self):
-        return CartMemento(self.items)
+        return CartMemento(deepcopy(self.items))
 
     def restore_memento(self, memento):
         self.items = memento.get_state()
+
+    def __str__(self):
+        result = "Cart: "
+        for item in self.items:
+            result += f"{item}; "
+        return result

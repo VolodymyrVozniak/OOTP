@@ -28,4 +28,4 @@ class Proxy:
     def is_authorized(self, action):
         # check if user is authorized to perform the given action
         # return True if authorized, False otherwise
-        pass
+        return True

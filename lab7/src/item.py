@@ -7,3 +7,6 @@ class CartItem:
 
     def get_total_price(self):
         return self.price * self.quantity
+    
+    def __str__(self):
+        return f"CartItem(item_id={self.item_id}, name={self.name}, price={self.price}, quantity={self.quantity})"
